@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UseNotas - Emissão de Notas Fiscais Eletrônicas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .text-primary { color: #2C3E50; }
+        .bg-primary { background-color: #2C3E50; }
+        .border-primary { border-color: #2C3E50; }
+        .text-secondary { color: #3498DB; }
+        .bg-secondary { background-color: #3498DB; }
+        .border-secondary { border-color: #3498DB; }
+        .text-accent { color: #E74C3C; }
+        .bg-accent { background-color: #E74C3C; }
+        .border-accent { border-color: #E74C3C; }
+        
+        .btn-primary {
+            background-color: #2C3E50;
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #1A252F;
+        }
+        .btn-secondary {
+            background-color: #3498DB;
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #2980B9;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3498DB;
+            transition: width 0.3s;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .feature-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .input-highlight:focus {
+            border-color: #3498DB;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-primary bg-white">
+    <!-- Header/Navbar -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl">UN</div>
+                    <span class="ml-3 text-xl font-semibold">UseNotas</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="nav-link text-gray-600 hover:text-primary transition">Recursos</a>
+                    <a href="#how-it-works" class="nav-link text-gray-600 hover:text-primary transition">Como funciona</a>
+                    <a href="#pricing" class="nav-link text-gray-600 hover:text-primary transition">Planos</a>
+                    <a href="#faq" class="nav-link text-gray-600 hover:text-primary transition">Dúvidas</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="#contact" class="hidden md:block px-4 py-2 text-secondary font-medium rounded-lg hover:bg-blue-50 transition">Contato</a>
+                    <a href="#waitlist" class="px-4 py-2 btn-secondary font-medium rounded-lg shadow-md">Lista de espera</a>
+                    <button class="md:hidden text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Emissão de notas fiscais <span class="text-secondary">simplificada</span></h1>
+                <p class="text-lg text-gray-600 mb-8">A solução completa para emissão de notas fiscais eletrônicas com conformidade fiscal e gestão financeira integrada.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#waitlist" class="px-8 py-4 btn-secondary rounded-lg shadow-lg text-center">Entrar na lista de espera</a>
+                    <a href="#demo" class="px-8 py-4 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition text-center">Ver demonstração</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative max-w-md">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="font-semibold text-lg">Nota Fiscal #001</h3>
+                                <span class="px-3 py-1 bg-blue-100 text-secondary text-sm rounded-full">Pendente</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Cliente:</span>
+                                    <span class="font-medium">Empresa XYZ</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Valor:</span>
+                                    <span class="font-medium">R$ 1.250,00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Vencimento:</span>
+                                    <span class="font-medium">15/08/2023</span>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-gray-200">
+                                <button class="w-full py-2 btn-secondary rounded-lg">Emitir Nota</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Recursos essenciais</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Tudo o que você precisa para emissão de notas fiscais</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 bg-secondary rounded-lg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-file-invoice-dollar text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Emissão de NF-e</h3>
+                    <p class="text-gray-600">Emissão rápida e segura de notas fiscais eletrônicas com validade jurídica.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 bg-secondary rounded-lg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-sync-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Sincronização automática</h3>
+                    <p class="text-gray-600">Integração com os principais sistemas de gestão e ERPs do mercado.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 bg-secondary rounded-lg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Conformidade fiscal</h3>
+                    <p class="text-gray-600">Sempre atualizado com as últimas mudanças na legislação tributária.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 bg-secondary rounded-lg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-chart-bar text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Relatórios financeiros</h3>
+                    <p class="text-gray-600">Geração de relatórios para análise e tomada de decisão.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 bg-secondary rounded-lg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Acesso multiplataforma</h3>
+                    <p class="text-gray-600">Acesse de qualquer dispositivo, quando e onde precisar.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 bg-secondary rounded-lg flex items-center justify-center text-white mb-6">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Suporte especializado</h3>
+                    <p class="text-gray-600">Equipe técnica pronta para ajudar com qualquer dúvida fiscal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Como funciona</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Implementação simples em 4 etapas</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-lg border border-gray-100 shadow-sm text-center">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-semibold mb-3">Cadastro</h3>
+                    <p class="text-gray-600">Preencha nosso formulário com os dados da sua empresa.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-lg border border-gray-100 shadow-sm text-center">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-semibold mb-3">Integração</h3>
+                    <p class="text-gray-600">Conecte-se com seus sistemas existentes em minutos.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-lg border border-gray-100 shadow-sm text-center">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-semibold mb-3">Configuração</h3>
+                    <p class="text-gray-600">Personalize conforme as necessidades do seu negócio.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="bg-white p-8 rounded-lg border border-gray-100 shadow-sm text-center">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">4</div>
+                    <h3 class="text-xl font-semibold mb-3">Pronto!</h3>
+                    <p class="text-gray-600">Comece a emitir notas fiscais imediatamente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Planos transparentes</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Escolha o plano ideal para o seu negócio</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-2">Básico</h3>
+                        <p class="text-gray-600 mb-6">Para pequenos negócios</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">R$49</span>
+                            <span class="text-gray-500">/mês</span>
+                        </div>
+                        <a href="#waitlist" class="block w-full py-3 border border-secondary text-secondary font-medium rounded-lg hover:bg-blue-50 transition text-center mb-6">Assinar Plano</a>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Até 50 notas/mês</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>1 usuário</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Relatórios básicos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Pro Plan (Featured) -->
+                <div class="relative">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-3 bg-secondary text-white text-sm font-semibold px-4 py-1 rounded-full shadow-lg">Mais Popular</div>
+                    <div class="bg-white rounded-lg border-2 border-secondary shadow-lg overflow-hidden">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold mb-2">Profissional</h3>
+                            <p class="text-gray-600 mb-6">Para empresas em crescimento</p>
+                            <div class="mb-6">
+                                <span class="text-4xl font-bold">R$99</span>
+                                <span class="text-gray-500">/mês</span>
+                            </div>
+                            <a href="#waitlist" class="block w-full py-3 btn-secondary font-medium rounded-lg text-center mb-6">Assinar Plano</a>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Até 200 notas/mês</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>3 usuários</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Relatórios avançados</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2"></i>
+                                    <span>Integrações básicas</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-2">Empresarial</h3>
+                        <p class="text-gray-600 mb-6">Para grandes empresas</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">R$199</span>
+                            <span class="text-gray-500">/mês</span>
+                        </div>
+                        <a href="#waitlist" class="block w-full py-3 border border-secondary text-secondary font-medium rounded-lg hover:bg-blue-50 transition text-center mb-6">Assinar Plano</a>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Notas ilimitadas</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Usuários ilimitados</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Relatórios personalizados</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Todas integrações</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 px-6 bg-white">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Perguntas frequentes</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Tire suas dúvidas sobre o UseNotas</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none">
+                        <h3 class="text-lg font-semibold text-left">O que é o UseNotas?</h3>
+                        <i class="fas fa-chevron-down text-secondary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600">O UseNotas é uma plataforma completa para emissão de notas fiscais eletrônicas e gestão fiscal, desenvolvida para simplificar os processos burocráticos das empresas.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none">
+                        <h3 class="text-lg font-semibold text-left">Quando o MVP estará disponível?</h3>
+                        <i class="fas fa-chevron-down text-secondary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600">Nosso MVP está previsto para lançamento em outubro de 2023. Cadastre-se na lista de espera para acesso antecipado e benefícios exclusivos.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 focus:outline-none">
+                        <h3 class="text-lg font-semibold text-left">Quais tipos de nota fiscal o sistema emite?</h3>
+                        <i class="fas fa-chevron-down text-secondary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600">Emitimos todos os tipos de notas fiscais eletrônicas exigidas pela legislação brasileira, incluindo NF-e, NFS-e, NFC-e e CT-e, sempre atualizados conforme as mudanças na legislação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section id="waitlist" class="py-20 px-6 bg-secondary text-white">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Garanta seu acesso antecipado</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Entre para a lista de espera e seja um dos primeiros a usar o UseNotas</p>
+            
+            <form class="max-w-md mx-auto">
+                <div class="mb-4">
+                    <input type="text" placeholder="Seu nome" class="w-full px-4 py-3 rounded-lg focus:outline-none text-gray-800">
+                </div>
+                <div class="mb-4">
+                    <input type="email" placeholder="Seu e-mail" class="w-full px-4 py-3 rounded-lg focus:outline-none text-gray-800">
+                </div>
+                <div class="mb-6">
+                    <input type="text" placeholder="Nome da empresa" class="w-full px-4 py-3 rounded-lg focus:outline-none text-gray-800">
+                </div>
+                <button type="submit" class="w-full px-8 py-4 btn-primary rounded-lg shadow-lg">Entrar na lista de espera</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 px-6 bg-white">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Fale conosco</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Tire suas dúvidas ou solicite uma demonstração</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <input type="text" placeholder="Seu nome" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-highlight focus:outline-none">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Seu e-mail" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-highlight focus:outline-none">
+                        </div>
+                        <div>
+                            <textarea placeholder="Sua mensagem" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-highlight focus:outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="px-8 py-4 btn-secondary rounded-lg shadow-lg">Enviar mensagem</button>
+                    </form>
+                </div>
+                
+                <div>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Endereço</h4>
+                                <p class="text-gray-600">Av. Paulista, 1000 - São Paulo/SP</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">E-mail</h4>
+                                <p class="text-gray-600">contato@usenotas.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Telefone</h4>
+                                <p class="text-gray-600">(11) 1234-5678</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary font-bold text-xl">UN</div>
+                        <span class="ml-3 text-xl font-semibold">UseNotas</span>
+                    </div>
+                    <p class="text-gray-300">Solução completa para emissão de notas fiscais eletrônicas.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Produto</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#features" class="text-gray-300 hover:text-white transition">Recursos</a></li>
+                        <li><a href="#pricing" class="text-gray-300 hover:text-white transition">Planos</a></li>
+                        <li><a href="#how-it-works" class="text-gray-300 hover:text-white transition">Como funciona</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Empresa</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Sobre nós</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Blog</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Termos de uso</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Política de privacidade</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-300">
+                <p>© 2023 UseNotas. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('transform');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Form Submission
+        document.querySelector('#waitlist form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado por se cadastrar na nossa lista de espera! Entraremos em contato em breve.');
+            this.reset();
+        });
+
+        document.querySelector('#contact form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Sua mensagem foi enviada com sucesso! Nosso time entrará em contato em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
