@@ -1,0 +1,6 @@
+services:
+  usenotas:
+    image: usenotas
+    build:
+      context: .
+      dockerfile: ./Dockerfile
