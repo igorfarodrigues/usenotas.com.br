@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/ui/toaster';
 import Layout from '@/components/Layout';
 import HomePage from '@/pages/HomePage';
 import BlogPage from '@/pages/BlogPage';
